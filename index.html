@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Vaishnavi Padiya — SDE · AI/ML</title>
+  <meta name="description" content="SDE · AI/ML portfolio of Vaishnavi Padiya — ships robust ML systems, RAG apps, and production web." />
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <canvas id="bg"></canvas>
+
+  <header class="site-header">
+    <nav class="nav">
+      <a class="brand" href="#hero" aria-label="Home">
+        <svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2l7 4v6c0 5-3.5 9-7 10c-3.5-1-7-5-7-10V6l7-4zM7 8v4c0 3.7 2.4 7 5 7s5-3.3 5-7V8l-5-3l-5 3z"/></svg>
+        <span>Vaishnavi</span>
+      </a>
+      <button class="nav-toggle" aria-label="Open menu">☰</button>
+      <ul class="nav-links">
+        <li><a href="#hero">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#publications">Publications</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a class="cta" href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+<!-- HERO -->
+<section id="hero" class="hero section observe">
+  <div class="hero__content">
+    <p class="eyebrow">SDE · AI/ML</p>
+    <h1 class="hero__title">Hi, I’m <span class="accent">Vaishnavi Padiya</span>.</h1>
+
+    <!-- two-liner bio -->
+    <p class="hero__subtitle">
+      I build intelligent systems that feel simple on the surface and thoughtful underneath.<br/>
+      Clean architecture, reliable models, and shipping work that actually helps people.
+    </p>
+
+    <div class="hero__actions">
+      <a class="btn primary" href="#projects">See Projects</a>
+      <a class="btn ghost" href="#experience">Experience</a>
+      <a class="btn link" href="#" target="_blank" rel="noopener">Download Résumé</a>
+    </div>
+
+    <div class="hero__meta">
+      <a href="mailto:vaishnavipadiya@gmail.com">vaishnavipadiya@gmail.com</a><span>•</span>
+      <a href="tel:+12136915273">+1-213-691-5273</a><span>•</span>
+      <a href="https://github.com/Vaish1809" target="_blank" rel="noopener">GitHub</a><span>•</span>
+      <a href="http://www.linkedin.com/in/vaishnavipadiya" target="_blank" rel="noopener">LinkedIn</a><span>•</span>
+      California, USA
+    </div>
+  </div>
+
+  <!-- keep your photo here (use a relative path in your project) -->
+  <!-- <div class="hero__media">
+    <img class="hero__photo" src="assets/me.jpeg" alt="Vaishnavi Mehul Padiya" />
+  </div> -->
+</section>
+
+
+
+    <!-- ABOUT -->
+ <!-- <section id="about" class="about section observe">
+  <h2 class="section__title">About</h2>
+  <p class="lead">
+    I’m a USC Computer Science grad student who likes balancing logic with creativity — engineering systems that think clearly and feel effortless. 
+    I care about good data, clean interfaces, and work that makes people say, “oh, that’s neat.” -->
+
+<section id="about" class="about section observe">
+  <h2 class="section__title">About</h2>
+  <p class="lead">
+    I’m Vaishnavi Mehul Padiya — a USC Computer Science grad student who likes building things that think clearly and feel effortless.
+    I care about the details: clean architecture, good data, readable code, and interfaces that quietly get out of the way.
+    I’m most at home where AI meets engineering — designing systems that learn, adapt, and still ship on time.
+  </p>
+  <p class="lead">
+    My personality in three lines: curious by default, empathetic by design, and happily obsessive about naming variables.
+    I love turning fuzzy ideas into reliable features, mentoring teammates, and making complex tech feel a little more human.
+
+  </p>
+</section>
+
+<!-- SKILLS (compact pills, no categories) -->
+<section id="skills" class="skills section observe">
+  <h2 class="section__title">Skills</h2>
+
+  <div class="skill-list">
+    <!-- Languages / CS -->
+    <span class="skill-pill" title="Python">
+      <svg viewBox="0 0 64 64" aria-hidden="true"><path fill="#3776AB" d="M32 6c8 0 12 3 12 9v7H22c-6 0-10 4-10 10v8c0 6 4 10 10 10h6v-6h-6c-3 0-4-1-4-4v-8c0-3 1-4 4-4h22V15c0-7-5-9-12-9h-3v6h3z"/></svg>
+      Python
+    </span>
+    <span class="skill-pill" title="C/C++">
+      <svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="12" fill="#00599C"/><text x="50%" y="43%" text-anchor="middle" font-size="28" font-weight="700" fill="#fff" font-family="ui-sans-serif,Segoe UI">C</text><text x="50%" y="66%" text-anchor="middle" font-size="20" font-weight="700" fill="#fff" font-family="ui-sans-serif,Segoe UI">++</text></svg>
+      C/C++
+    </span>
+    <span class="skill-pill" title="JavaScript">
+      <svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="12" fill="#F7DF1E"/><text x="50%" y="58%" text-anchor="middle" font-size="28" font-weight="800" fill="#000" font-family="ui-sans-serif,Segoe UI">JS</text></svg>
+      JavaScript
+    </span>
+    <span class="skill-pill">Java</span>
+    <span class="skill-pill">Dart</span>
+    <span class="skill-pill">SQL</span>
+    <span class="skill-pill">DSA</span>
+    <span class="skill-pill">System Design</span>
+
+    <!-- AI / ML -->
+    <span class="skill-pill" title="PyTorch">
+      <svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="12" fill="#241F31"/><path d="M34 14l6 6a18 18 0 1 1-6-6z" fill="#EE4C2C"/></svg>
+      PyTorch
+    </span>
+    <span class="skill-pill" title="TensorFlow">
+      <svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="12" fill="#fff3e0"/><path d="M18 32l14-8v8l-6 3v12l-8-4V32z" fill="#FF6F00"/><path d="M46 32l-14-8v8l6 3v12l8-4V32z" fill="#F57C00"/></svg>
+      TensorFlow
+    </span>
+    <span class="skill-pill">scikit-learn</span>
+    <span class="skill-pill">Keras</span>
+    <span class="skill-pill">Hugging Face</span>
+    <span class="skill-pill">NLTK</span>
+    <span class="skill-pill">RAG</span>
+
+    <!-- Backend / App -->
+    <span class="skill-pill" title="FastAPI">
+      <svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="12" fill="#E0F2F1"/><circle cx="32" cy="32" r="16" fill="#00AF87"/></svg>
+      FastAPI
+    </span>
+    <span class="skill-pill" title="Node.js">
+      <svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="12" fill="#1b1f23"/><path d="M32 14l16 9v18l-16 9-16-9V23z" fill="#3C873A"/></svg>
+      Node.js
+    </span>
+    <span class="skill-pill">REST APIs</span>
+    <span class="skill-pill">Flutter</span>
+    <span class="skill-pill">Streamlit</span>
+
+    <!-- Data / Cloud / Tools -->
+    <span class="skill-pill" title="MongoDB">
+      <svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="12" fill="#E8F5E9"/><path d="M32 12c8 10 8 24 0 40-8-16-8-30 0-40z" fill="#4DB33D"/></svg>
+      MongoDB
+    </span>
+    <span class="skill-pill" title="MySQL">
+      <svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="12" fill="#E3F2FD"/><path d="M20 42c6-10 12-16 24-20-2 6-2 10 2 16-4-2-8-2-12 2-4 4-8 4-14 2z" fill="#00758F"/></svg>
+      MySQL
+    </span>
+    <span class="skill-pill" title="Docker">
+      <svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="12" fill="#e3f2fd"/><path d="M38 28h6v6h-6zM30 28h6v6h-6zM22 28h6v6h-6zM22 36h22c4 0 6 2 6 4 0 6-8 10-20 10S10 46 10 40c0-2 2-4 6-4h6z" fill="#2496ED"/></svg>
+      Docker
+    </span>
+    <span class="skill-pill">Google Cloud Run</span>
+    <span class="skill-pill">CI/CD</span>
+    <span class="skill-pill">Linux</span>
+    <span class="skill-pill">Git</span>
+    <span class="skill-pill" title="GitHub">
+      <svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="12" fill="#0d1117"/><path d="M32 12a20 20 0 0 0-6 39v-6c-4 1-5-2-5-2-1-2-2-2-2-2-2-1 0-1 0-1 2 0 3 2 3 2 2 3 5 2 6 2 0-1 1-3 2-4-7-1-11-4-11-11 0-3 1-5 3-7 0-1-1-4 0-7 0 0 2 0 7 3 2-1 4-1 6-1s4 0 6 1c5-3 7-3 7-3 1 3 0 6 0 7 2 2 3 4 3 7 0 7-4 10-11 11 1 1 2 3 2 6v6A20 20 0 0 0 32 12z" fill="#fff"/></svg>
+      GitHub
+    </span>
+    <span class="skill-pill">Figma</span>
+    <span class="skill-pill">LaTeX</span>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience" class="experience section observe">
+  <h2 class="section__title">Experience</h2>
+
+  <div class="timeline-alt">
+    <!-- VJTI -->
+    <article class="t-card" data-side="left">
+      <div class="t-pin">VJTI</div>
+      <div class="t-body">
+        <header>
+          <h3>AI Research Intern — Veermata Jijabai Technological Institute</h3>
+          <p class="meta">Mar 2024 – Oct 2024 · Mumbai, IN</p>
+        </header>
+        <ul class="t-points">
+          <li>Co-authored <em>PhishGuard</em>; built a phishing-detection pipeline across URL, HTML, and visual cues.</li>
+          <li>URL models (RF/GB/SVM) to <strong>98.12%</strong>; HTML pipeline (31 features) tuned with Optuna to <strong>95%</strong>.</li>
+          <li>Real-time Chrome extension prototype with reproducible featureization + clean interfaces.</li>
+        </ul>
+        <p class="tiny"><strong>Stack:</strong> Python, scikit-learn, XGBoost, Optuna, BeautifulSoup, Chrome APIs</p>
+      </div>
+    </article>
+
+    <!-- Orinova -->
+    <article class="t-card" data-side="right">
+      <div class="t-pin">Orinova</div>
+      <div class="t-body">
+        <header>
+          <h3>Software Development Intern (Apps) — Orinova Innovation</h3>
+          <p class="meta">Jul 2023 – Oct 2023 · IN</p>
+        </header>
+        <ul class="t-points">
+          <li>Architected an IT Service Booking app end-to-end with clear API boundaries and scalable data models.</li>
+          <li>Built a University Course app from zero to full-stack MVP with maintainable patterns.</li>
+        </ul>
+        <p class="tiny"><strong>Stack:</strong> Flutter (Bloc), Node.js, MongoDB, Figma</p>
+      </div>
+    </article>
+
+    <!-- Crucibo -->
+    <article class="t-card" data-side="left">
+      <div class="t-pin">Crucibo</div>
+      <div class="t-body">
+        <header>
+          <h3>Software Engineering Intern (Mobile) — Crucibo Technologies</h3>
+          <p class="meta">Aug 2023 – Nov 2023 · Mumbai, IN</p>
+        </header>
+        <ul class="t-points">
+          <li>Sketched 10 high-fidelity admin wireframes; implemented 8 app components and a robust notification system.</li>
+          <li>Improved flows and UI consistency — boosted engagement by ~<strong>15%</strong>.</li>
+        </ul>
+        <p class="tiny"><strong>Stack:</strong> Flutter (Bloc), REST APIs, Figma</p>
+      </div>
+    </article>
+  </div>
+</section>
+
+
+ <!-- PUBLICATIONS -->
+<section id="publications" class="publications section observe">
+  <h2 class="section__title">Publications</h2>
+
+  <div class="pub-grid">
+    <div class="pub-card pub-center">
+      <div class="pub-info">
+        <h3 class="pub-title">TeenSenti — Slang-Based Sentiment Classifier</h3>
+        <p class="pub-venue">IEEE · NLP · Deep Learning</p>
+        <p class="pub-doi">DOI:
+          <a target="_blank" rel="noopener" href="https://doi.org/10.1109/AMATHE61652.2024.10582077">
+            10.1109/AMATHE61652.2024.10582077
+          </a>
+        </p>
+      </div>
+      <div class="pub-actions">
+        <a class="btn ghost" target="_blank" rel="noopener" href="assets/papers/TeenSenti_IEEE.pdf">View PDF</a>
+        <a class="btn primary" target="_blank" rel="noopener" href="https://doi.org/10.1109/AMATHE61652.2024.10582077">View Paper</a>
+      </div>
+    </div>
+
+
+
+    <div class="pub-card pub-center">
+      <div class="pub-info">
+        <h3 class="pub-title">Instagram User Classification & Engagement Prediction</h3>
+        <p class="pub-venue">Springer LNNS · Ensemble · Regression</p>
+        <p class="pub-doi">DOI:
+          <a target="_blank" rel="noopener" href="https://doi.org/10.1109/AMATHE61652.2024.10582077">
+            10.1109/AMATHE61652.2024.10582077
+          </a>
+        </p>
+      </div>
+      <div class="pub-actions">
+        <a class="btn ghost" target="_blank" rel="noopener" href="assets/papers/TeenSenti_IEEE.pdf">View PDF</a>
+        <a class="btn primary" target="_blank" rel="noopener" href="https://doi.org/10.1109/AMATHE61652.2024.10582077">View Paper</a>
+      </div>
+    </div>
+
+
+
+    <div class="pub-card pub-center">
+      <div class="pub-info">
+        <h3 class="pub-title">Enhancing Scholarship Opportunities — Multi-Label Classification</h3>
+        <p class="pub-venue">Springer LNNS · Multi-Output ML</p>
+        <p class="pub-doi">DOI:
+          <a target="_blank" rel="noopener" href="https://doi.org/10.1109/AMATHE61652.2024.10582077">
+            10.1109/AMATHE61652.2024.10582077
+          </a>
+        </p>
+      </div>
+      <div class="pub-actions">
+        <a class="btn ghost" target="_blank" rel="noopener" href="assets/papers/TeenSenti_IEEE.pdf">View PDF</a>
+        <a class="btn primary" target="_blank" rel="noopener" href="https://doi.org/10.1109/AMATHE61652.2024.10582077">View Paper</a>
+      </div>
+    </div>
+
+
+  </div>
+</section>
+
+
+
+    <!-- EDUCATION -->
+    <section id="education" class="education section observe">
+  <h2 class="section__title">Education</h2>
+  <div class="timeline">
+    <div class="t-item">
+      <div class="t-dot"></div>
+      <div class="t-content">
+        <h3>University of Southern California — MS in Computer Science</h3>
+        <p class="meta">Los Angeles, USA · Aug 2025 – May 2027</p>
+        <p><strong>Coursework:</strong> Analysis of Algorithms, Information Retrieval & Web Search Engines</p>
+      </div>
+    </div>
+    <div class="t-item">
+      <div class="t-dot"></div>
+      <div class="t-content">
+        <h3>Dwarkadas J. Sanghvi College of Engineering — B.Tech (Honors in Intelligent Computing)</h3>
+        <p class="meta">Mumbai, India · Dec 2021 – May 2025 · GPA: 3.66/4</p>
+        <p><strong>Coursework:</strong> DSA, Data Mining, ML, DL, Software Engineering, NLP, AI, Big Data, DBMS, Distributed Systems</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+    <!-- CONTACT -->
+    <section id="contact" class="contact section observe">
+      <h2 class="section__title">Contact</h2>
+      <p class="lead">Exploring **AI/ML** or **SDE** internship roles — happy to share more details or a focused demo.</p>
+      <form id="contact-form" class="form">
+        <div class="field">
+          <label for="name">Name</label>
+          <input id="name" name="name" type="text" placeholder="Your name" required />
+        </div>
+        <div class="field">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" placeholder="you@example.com" required />
+        </div>
+        <div class="field">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="5" placeholder="Tell me about the team or scope…" required></textarea>
+        </div>
+        <button class="btn primary" type="submit">Send Message</button>
+        <p id="form-status" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div>© <span id="year"></span> Vaishnavi Mehul Padiya</div>
+    <div class="socials">
+      <a href="https://github.com/Vaish1809" target="_blank" rel="noopener" aria-label="GitHub" class="icon">
+        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M12 .5A12 12 0 0 0 0 12.6c0 5.3 3.4 9.8 8.1 11.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6c-.6-1.5-1.4-1.9-1.4-1.9c-1.1-.8.1-.8.1-.8c1.2.1 1.8 1.3 1.8 1.3c1.1 1.8 2.8 1.3 3.5 1c.1-.8.4-1.3.7-1.6c-2.7-.3-5.6-1.4-5.6-6.2c0-1.4.5-2.5 1.3-3.4c-.1-.3-.6-1.7.1-3.5c0 0 1-.3 3.5 1.3c1-.3 2-.4 3-.4s2 .1 3 .4c2.5-1.6 3.5-1.3 3.5-1.3c.7 1.8.2 3.2.1 3.5c.8.9 1.3 2 1.3 3.4c0 4.8-2.9 5.9-5.6 6.2c.4.3.8 1 .8 2.1v3.1c0 .3.2.7.8.6c4.7-1.6 8.1-6.1 8.1-11.4A12 12 0 0 0 12 .5z"/></svg>
+      </a>
+      <a href="http://www.linkedin.com/in/vaishnavipadiya" target="_blank" rel="noopener" aria-label="LinkedIn" class="icon">
+        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M19 3A2.94 2.94 0 0 1 22 6v12a2.94 2.94 0 0 1-3 3H5a2.94 2.94 0 0 1-3-3V6a2.94 2.94 0 0 1 3-3h14M8.34 18.34V10H5.67v8.34h2.67m-1.33-9.51a1.55 1.55 0 1 0-1.55-1.55a1.55 1.55 0 0 0 1.55 1.55m11.66 9.51v-4.6c0-2.46-1.31-3.6-3.05-3.6a2.64 2.64 0 0 0-2.38 1.29h-.05V10H10.9c.04.74 0 8.34 0 8.34h2.67v-4.66c0-.25.02-.51.1-.69c.22-.51.73-1.04 1.58-1.04c1.11 0 1.56.79 1.56 1.95v4.44z"/></svg>
+      </a>
+      <a href="mailto:padiya@usc.edu" aria-label="Email" class="icon">
+        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M12 13L2 6.76V18h20V6.76L12 13zM12 11L22 4H2l10 7z"/></svg>
+      </a>
+    </div>
+  </footer>
+</body>
+</html>
+
+<section class="section observe" id="links">
+  <h2 class="section__title">More</h2>
+  <div class="grid">
+    <article class="card">
+      <h3>Academic Projects & Papers</h3>
+      <ul>
+        <li><a target="_blank" href="https://drive.google.com/file/d/1DRyMJEKh_lrq2mYlbiYX_e5m-xXkNc8z/view?usp=sharing">TeenSenti — IEEE (PDF)</a></li>
+        <li><a target="_blank" href="https://drive.google.com/file/d/1pAV1iSQuvoZYOxdxR6J2IEV92JIz_rEf/view?usp=sharing">Scholarship Recommendation — Springer (PDF)</a></li>
+        <li><a target="_blank" href="https://drive.google.com/file/d/1lB2b3GkHid5drXTEy0DTZ8xxOYWtTV6_/view?usp=drive_link">Instagram Classification & Engagement — Springer (PDF)</a></li>
+        <li><a target="_blank" href="https://github.com/Vaish1809/MindScape">MindScape — Hackathon (GitHub)</a></li>
+      </ul>
+    </article>
+    <article class="card">
+      <h3>Courses & Certifications</h3>
+      <ul>
+        <li><a target="_blank" href="https://drive.google.com/file/d/1LYBIZAMCiLViLFQ0W9rlMx5BcHrQma6J/view?usp=sharing">Flutter & Dart — Udemy (2024)</a></li>
+        <li><a target="_blank" href="https://drive.google.com/file/d/1htbi4gGv7RbBfgnMR5VkrgFnoxvujhJP/view?usp=sharing">Machine Learning A-Z — Udemy (2024)</a></li>
+      </ul>
+    </article>
+    <article class="card">
+      <h3>Extracurriculars</h3>
+      <ul>
+        <li>Speaker at HackPrep (Unicode @ DJSCE), mentor to 20+ juniors, NGO teaching initiatives.</li>
+        <li>Organizer, 24-hour national hackathon “HACKNICHE” (200 attendees, 1800 registrations).</li>
+      </ul>
+    </article>
+  </div>
+</section>
