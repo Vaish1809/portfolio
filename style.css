@@ -457,3 +457,97 @@ input:focus, textarea:focus{border-color:rgba(138,180,248,.55)}
   box-shadow:0 0 0 6px rgba(138,180,248,.13);
   white-space:nowrap;
 }
+
+/* ---- Cards grid used by Extracurriculars + More ---- */
+.grid{
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap:16px;
+}
+@media (max-width: 980px){
+  .grid{ grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 640px){
+  .grid{ grid-template-columns: 1fr; }
+}
+
+.card{
+  background: linear-gradient(180deg, var(--glass-strong), var(--glass));
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: var(--shadow);
+}
+.card h3{
+  margin: 0 0 8px;
+}
+.card ul{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.card ul li{
+  padding-left: 18px;
+  position: relative;
+  margin: 8px 0;
+  color: var(--text);
+}
+.card ul li::before{
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: rgba(138,180,248,.9); /* subtle accent bullet */
+}
+
+/* ===== MOBILE FIX: stack timeline cleanly with spacing ===== */
+@media (max-width: 900px){
+  :root{
+    --tl-gutter: 0%;      
+    --tl-gap-y: 36px;     /* vertical gap between cards */
+  }
+
+  /* Move the vertical line to the left */
+  .timeline-alt::before{
+    left: 24px;
+    transform: none;
+  }
+
+  /* Stack cards with good spacing */
+  .t-card{
+    padding: calc(var(--tl-gap-y) + 20px) 0 var(--tl-gap-y) 64px;
+    min-height: auto;
+    margin-bottom: 30px;         /* 👈 adds clear space between cards */
+  }
+
+  /* Remove alternating side offsets */
+  .t-card[data-side="left"]  .t-body,
+  .t-card[data-side="right"] .t-body{
+    margin: 0;
+  }
+
+  /* Oval pin sits neatly on left line */
+  .t-pin{
+    left: 24px;
+    top: 8px;
+    transform: translateX(-50%);
+    padding: 6px 14px;
+    font-size: 0.9rem;
+    outline: 6px solid var(--bg);
+    outline-offset: 1px;
+    box-shadow:
+      0 0 8px rgba(138,180,248,.20),
+      0 2px 5px rgba(0,0,0,.35);
+  }
+
+  /* Adjust text spacing */
+  .t-points{ margin: 10px 0 0 18px; }
+  .t-points li{ margin: 6px 0; line-height: 1.4; }
+  .tiny, .meta{ font-size: 0.9rem; }
+}
+
+/* Optional: mid-size tablets slightly closer together */
+@media (min-width: 901px) and (max-width: 1180px){
+  :root{ --tl-gutter: 52%; }
+  .t-card[data-side="left"]  .t-body{ margin-right: 4%; }
+  .t-card[data-side="right"] .t-body{ margin-left:  4%; }
+}
