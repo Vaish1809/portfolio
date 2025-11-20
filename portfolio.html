@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Vaishnavi Padiya — SDE · AI/ML</title>
+  <meta name="description" content="SDE · AI/ML portfolio of Vaishnavi Padiya." />
+  <style>
+    /* ---------- Root Variables ---------- */
+    :root {
+      --bg: #0b0f17;
+      --panel: #151b2b;
+      --text: #e6e9ef;
+      --muted: #aab3c5;
+      --accent: #8ab4f8;
+      --accent-2: #8f7bf7;
+      --border: rgba(255, 255, 255, 0.1);
+      --glass: rgba(255, 255, 255, 0.03);
+      --glass-strong: rgba(255, 255, 255, 0.07);
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+      --radius: 16px;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { height: 100%; scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      color: var(--text);
+      background: radial-gradient(circle at 80% -10%, #1a2540 0%, transparent 50%),
+                  radial-gradient(circle at 0% 20%, #1f2535 0%, transparent 40%),
+                  var(--bg);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Canvas Background - Fixed Z-Index to ensure it stays behind */
+    #bg { position: fixed; inset: 0; z-index: -1; display: block; width: 100%; height: 100%; }
+
+    /* Header */
+    .site-header { position: sticky; top: 0; z-index: 100; backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.05); }
+    .nav { max-width: 1100px; margin: 0 auto; padding: 16px 24px; display: flex; align-items: center; justify-content: space-between; }
+    .brand { display: flex; align-items: center; gap: 10px; color: var(--text); text-decoration: none; font-weight: 700; font-size: 1.1rem; }
+    .brand svg { color: var(--accent); }
+    .nav-toggle { display: none; background: none; border: 1px solid var(--border); color: var(--text); padding: 8px 12px; border-radius: 8px; cursor: pointer; }
+
+    .nav-links { list-style: none; display: flex; gap: 24px; margin: 0; padding: 0; }
+    .nav-links a { color: var(--muted); text-decoration: none; transition: 0.2s; font-size: 0.95rem; }
+    .nav-links a:hover { color: var(--accent); }
+    .nav-links .cta { color: var(--accent); font-weight: 600; }
+
+    /* General Layout */
+    .section { max-width: 1100px; margin: 0 auto; padding: 100px 24px; }
+    .section__title { font-size: 2rem; margin-bottom: 32px; color: var(--text); }
+    .lead { color: var(--muted); font-size: 1.1rem; max-width: 700px; margin-bottom: 24px; }
+    .lead-text { color: var(--muted); font-size: 0.95rem; margin: 12px 0; }
+
+    /* Hero */
+    .hero { min-height: 80vh; display: flex; align-items: center; padding-top: 0; }
+    .hero__content { max-width: 800px; }
+    .eyebrow { color: var(--accent); text-transform: uppercase; letter-spacing: 1px; font-size: 0.85rem; font-weight: 600; margin-bottom: 12px; }
+    .hero__title { font-size: clamp(2.5rem, 5vw, 4rem); line-height: 1.1; margin: 0 0 24px 0; }
+    .hero__title .accent { background: linear-gradient(90deg, var(--accent), var(--accent-2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .hero__subtitle { color: var(--muted); font-size: 1.2rem; margin-bottom: 32px; max-width: 650px; }
+    .hero__actions { display: flex; gap: 12px; flex-wrap: wrap; }
+    .hero__meta { margin-top: 32px; color: var(--muted); font-size: 0.9rem; display: flex; gap: 12px; flex-wrap: wrap; }
+    .hero__meta a { color: var(--text); text-decoration: none; border-bottom: 1px solid var(--border); }
+
+    /* Buttons */
+    .btn { display: inline-block; padding: 12px 24px; border-radius: 50px; text-decoration: none; font-weight: 600; transition: 0.2s; border: 1px solid transparent; cursor: pointer; }
+    .btn.small { padding: 6px 16px; font-size: 0.85rem; }
+    .btn.primary { background: var(--accent); color: #0b0f17; }
+    .btn.primary:hover { filter: brightness(1.1); }
+    .btn.ghost { background: var(--glass); border-color: var(--border); color: var(--text); }
+    .btn.ghost:hover { background: var(--glass-strong); border-color: var(--muted); }
+    .btn.link { color: var(--accent); padding: 12px 0; }
+
+    /* Timeline (Experience) */
+    .timeline-alt { position: relative; margin-top: 40px; }
+    .timeline-alt::before { content: ""; position: absolute; left: 50%; top: 0; bottom: 0; width: 2px; background: var(--border); transform: translateX(-50%); }
+    .t-card { position: relative; padding: 20px 0; width: 50%; }
+    .t-card[data-side="left"] { left: 0; padding-right: 40px; }
+    .t-card[data-side="right"] { left: 50%; padding-left: 40px; }
+    .t-pin { position: absolute; top: 20px; width: auto; height: auto; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: bold; color: #0b0f17; border: 2px solid var(--bg); background: var(--accent); transform: translateY(-50%); z-index: 2; }
+    .t-card[data-side="left"] .t-pin { right: -20px; left: auto; }
+    .t-card[data-side="right"] .t-pin { left: -20px; right: auto; }
+
+    .t-body { background: var(--panel); padding: 24px; border-radius: var(--radius); border: 1px solid var(--border); box-shadow: var(--shadow); }
+    .t-body h3 { margin: 0 0 4px 0; font-size: 1.1rem; }
+    .meta { font-size: 0.85rem; color: var(--muted); margin-bottom: 12px; }
+    .t-points { padding-left: 18px; margin: 0; font-size: 0.95rem; color: var(--muted); }
+    .t-points li { margin-bottom: 6px; }
+    .tiny { font-size: 0.85rem; color: var(--accent); margin-top: 12px; display: block; }
+
+    /* PROJECTS SECTION */
+    .filters { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 32px; }
+    .pill { background: transparent; border: 1px solid var(--border); color: var(--muted); padding: 8px 16px; border-radius: 50px; cursor: pointer; transition: 0.2s; font-size: 0.9rem; }
+    .pill.active, .pill:hover { background: var(--accent); color: #0b0f17; border-color: var(--accent); }
+
+    .showcase { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; }
+
+    .p-card { background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; transition: transform 0.2s, border-color 0.2s; display: flex; flex-direction: column; }
+    .p-card:hover { transform: translateY(-5px); border-color: var(--accent); }
+    .p-card h3 { margin: 0 0 12px 0; font-size: 1.2rem; }
+
+    .badges { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 16px; }
+    .badge { font-size: 11px; padding: 4px 10px; background: var(--glass-strong); border-radius: 20px; color: var(--accent-2); border: 1px solid var(--border); }
+
+    .kpi-list { list-style: none; padding: 0; margin: 0 0 20px 0; font-size: 0.9rem; color: var(--muted); flex-grow: 1; }
+    .kpi-list li { position: relative; padding-left: 16px; margin-bottom: 8px; }
+    .kpi-list li::before { content: "▹"; position: absolute; left: 0; color: var(--accent); }
+
+    .actions { margin-top: auto; display: flex; gap: 10px; }
+
+    /* PUBLICATIONS (Standard Static Cards) */
+    .pub-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
+    .pub-card { background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; transition: transform 0.2s, border-color 0.2s; display: flex; flex-direction: column; }
+    .pub-card:hover { transform: translateY(-5px); border-color: var(--accent); }
+    .pub-card header { margin-bottom: 16px; }
+    .pub-title { font-size: 1.1rem; margin: 0 0 8px 0; line-height: 1.4; }
+    .pub-venue { color: var(--accent); font-size: 0.9rem; font-weight: 600; }
+    .pub-body { margin-top: auto; }
+    .pub-doi { font-size: 0.85rem; color: var(--muted); margin-bottom: 12px; font-family: monospace; opacity: 0.8; }
+    .pub-actions { display: flex; gap: 10px; }
+
+    /* SKILLS */
+    .skill-list { display: flex; flex-wrap: wrap; gap: 10px; }
+    .skill-pill { background: var(--glass); padding: 8px 16px; border-radius: 6px; border: 1px solid var(--border); color: var(--text); font-size: 0.9rem; }
+
+    /* EDUCATION (New Grid Layout) */
+    .edu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
+    .edu-card { background: var(--panel); padding: 32px; border-radius: var(--radius); border: 1px solid var(--border); display: flex; flex-direction: column; gap: 12px; transition: transform 0.2s; }
+    .edu-card:hover { transform: translateY(-4px); border-color: var(--accent); }
+    .edu-card h3 { margin: 0; font-size: 1.25rem; }
+    .edu-degree { color: var(--accent); font-weight: 600; font-size: 1rem; }
+    .edu-meta { font-size: 0.9rem; color: var(--muted); font-style: italic; }
+    .edu-desc { font-size: 0.95rem; color: var(--muted); line-height: 1.5; margin-top: 8px; }
+
+    /* EXTRACURRICULARS (New List Layout) */
+    .extra-list { display: flex; flex-direction: column; gap: 32px; }
+    .extra-item { display: grid; grid-template-columns: 220px 1fr; gap: 32px; border-bottom: 1px solid var(--border); padding-bottom: 32px; }
+    .extra-item:last-child { border-bottom: none; }
+    .extra-header h3 { margin: 0 0 8px 0; font-size: 1.1rem; color: var(--text); }
+    .extra-role { color: var(--accent); font-size: 0.9rem; font-weight: 600; margin-bottom: 4px; display: block; }
+    .extra-date { color: var(--muted); font-size: 0.85rem; }
+    .extra-content ul { margin: 0; padding-left: 18px; color: var(--muted); font-size: 0.95rem; }
+    .extra-content li { margin-bottom: 8px; }
+
+    /* CONTACT */
+    .form { max-width: 600px; background: var(--panel); padding: 32px; border-radius: var(--radius); border: 1px solid var(--border); }
+    .field { margin-bottom: 20px; }
+    .field label { display: block; margin-bottom: 8px; font-size: 0.9rem; color: var(--muted); }
+    .field input, .field textarea { width: 100%; background: var(--bg); border: 1px solid var(--border); padding: 12px; border-radius: 8px; color: var(--text); font-family: inherit; }
+    .field input:focus, .field textarea:focus { outline: none; border-color: var(--accent); }
+
+    /* Footer */
+    .site-footer { padding: 40px 24px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; color: var(--muted); font-size: 0.9rem; margin-top: 80px; }
+    .socials { display: flex; gap: 20px; }
+    .socials a { color: var(--text); text-decoration: none; transition: color 0.2s; }
+    .socials a:hover { color: var(--accent); }
+
+    /* ANIMATION UTILS - Default to visible to prevent blank screen */
+    .observe { opacity: 1; transform: translateY(0); transition: opacity 0.8s ease, transform 0.8s ease; }
+    .observe.hidden { opacity: 0; transform: translateY(30px); }
+
+    /* RESPONSIVE DESIGN */
+    @media (max-width: 768px) {
+      .nav-toggle { display: block; }
+      .nav-links { position: absolute; top: 100%; left: 0; right: 0; background: var(--panel); flex-direction: column; padding: 20px; gap: 16px; border-bottom: 1px solid var(--border); display: none; }
+      .nav-links.show { display: flex; }
+      .hero__title { font-size: 2.5rem; }
+      
+      /* Timeline collapse */
+      .timeline-alt::before { left: 20px; }
+      .t-card { width: 100%; padding-left: 50px !important; padding-right: 0 !important; left: 0 !important; }
+      .t-pin { left: 14px !important; right: auto !important; width: 12px; height: 12px; padding: 0; border: 2px solid var(--accent); background: var(--bg); }
+      
+      /* Extracurriculars collapse */
+      .extra-item { grid-template-columns: 1fr; gap: 12px; }
+      
+      .site-footer { flex-direction: column; gap: 16px; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Background Animation Canvas -->
+  <canvas id="bg"></canvas>
+
+  <header class="site-header">
+    <nav class="nav">
+      <a class="brand" href="#hero" aria-label="Home">
+        <svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2l7 4v6c0 5-3.5 9-7 10c-3.5-1-7-5-7-10V6l7-4zM7 8v4c0 3.7 2.4 7 5 7s5-3.3 5-7V8l-5-3l-5 3z"/></svg>
+        <span>Vaishnavi</span>
+      </a>
+      <button class="nav-toggle" aria-label="Open menu">☰</button>
+      <ul class="nav-links">
+        <li><a href="#hero">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#publications">Publications</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#extras">Extracurriculars</a></li>
+        <li><a class="cta" href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section id="hero" class="hero section observe hidden">
+      <div class="hero__content">
+        <p class="eyebrow">SDE · AI/ML</p>
+        <h1 class="hero__title">Hi, I’m <span class="accent">Vaishnavi Padiya</span>.</h1>
+        <!-- Updated Bio -->
+        <p class="hero__subtitle">
+          I bridge the gap between complex AI research and scalable software engineering. 
+          Passionate about building intelligent systems that see, understand, and interact with the world in real-time.
+        </p>
+        <div class="hero__actions">
+          <a class="btn primary" href="#projects">See Projects</a>
+          <a class="btn ghost" href="#experience">Experience</a>
+        </div>
+        <div class="hero__meta">
+          <a href="mailto:vaishnavipadiya@gmail.com">vaishnavipadiya@gmail.com</a><span>•</span>
+          <a href="tel:+12136915273">+1-213-691-5273</a><span>•</span>
+          <a href="https://github.com/Vaish1809" target="_blank" rel="noopener">GitHub</a><span>•</span>
+          <a href="http://www.linkedin.com/in/vaishnavipadiya" target="_blank" rel="noopener">LinkedIn</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="about section observe hidden">
+      <h2 class="section__title">About</h2>
+      <!-- Updated About Text -->
+      <p class="lead">
+        I’m Vaishnavi Mehul Padiya — a USC Computer Science grad student who likes building things that think clearly and feel effortless. I care about the details: clean architecture, good data, readable code, and interfaces that quietly get out of the way. I’m most at home where AI meets engineering — designing systems that learn, adapt, and still ship on time.
+
+      </p>
+      <p class="lead">
+        
+My personality in three lines: curious by default, empathetic by design, and happily obsessive about naming variables. I love turning fuzzy ideas into reliable features, mentoring teammates, and making complex tech feel a little more human.
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience" class="experience section observe hidden">
+      <h2 class="section__title">Experience</h2>
+      <div class="timeline-alt">
+        <!-- VJTI -->
+        <article class="t-card" data-side="left">
+          <div class="t-pin">VJTI</div>
+          <div class="t-body">
+            <header>
+              <h3>AI Research Intern — Veermata Jijabai Technological Institute</h3>
+              <p class="meta">Mar 2024 – Oct 2024 · Mumbai, IN</p>
+            </header>
+            <ul class="t-points">
+              <li>Co-authored <em>PhishGuard</em>; built a phishing-detection pipeline across URL, HTML, and visual cues.</li>
+              <li>URL models (RF/GB/SVM) to <strong>98.12%</strong>; HTML pipeline (31 features) tuned with Optuna to <strong>95%</strong>.</li>
+              <li>Real-time Chrome extension prototype with reproducible featureization + clean interfaces.</li>
+            </ul>
+            <p class="tiny"><strong>Stack:</strong> Python, scikit-learn, XGBoost, Optuna, BeautifulSoup</p>
+          </div>
+        </article>
+
+        <!-- Orinova -->
+        <article class="t-card" data-side="right">
+          <div class="t-pin">Orinova</div>
+          <div class="t-body">
+            <header>
+              <h3>Software Development Intern (Apps) — Orinova Innovation</h3>
+              <p class="meta">Jul 2023 – Oct 2023 · IN</p>
+            </header>
+            <ul class="t-points">
+              <li>Architected an IT Service Booking app end-to-end with clear API boundaries and scalable data models.</li>
+              <li>Built a University Course app from zero to full-stack MVP with maintainable patterns.</li>
+            </ul>
+            <p class="tiny"><strong>Stack:</strong> Flutter (Bloc), Node.js, MongoDB, Figma</p>
+          </div>
+        </article>
+
+        <!-- Crucibo -->
+        <article class="t-card" data-side="left">
+          <div class="t-pin">Crucibo</div>
+          <div class="t-body">
+            <header>
+              <h3>Software Engineering Intern (Mobile) — Crucibo Technologies</h3>
+              <p class="meta">Aug 2023 – Nov 2023 · Mumbai, IN</p>
+            </header>
+            <ul class="t-points">
+              <li>Sketched 10 high-fidelity admin wireframes; implemented 8 app components and a robust notification system.</li>
+              <li>Improved flows and UI consistency — boosted engagement by ~<strong>15%</strong>.</li>
+            </ul>
+            <p class="tiny"><strong>Stack:</strong> Flutter (Bloc), REST APIs, Figma</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="projects section observe hidden">
+      <h2 class="section__title">Selected Projects</h2>
+      <div class="filters">
+        <button class="pill active" data-filter="all">All</button>
+        <button class="pill" data-filter="ml">AI / ML</button>
+        <button class="pill" data-filter="sde">Full Stack / SDE</button>
+        <button class="pill" data-filter="quant">Quant</button>
+      </div>
+      <div class="showcase">
+        
+        <!-- Varnika (NEW) -->
+        <article class="p-card" data-tags="ml ai">
+          <header>
+            <h3>Varnika - Air-Writing Interpreter</h3>
+            <div class="badges"><span class="badge">Python</span><span class="badge">OpenCV</span><span class="badge">CNN</span><span class="badge">Streamlit</span></div>
+          </header>
+          <p class="lead-text">Real-time Vernacular AI interpreting Hindi air-writing gestures.</p>
+          <ul class="kpi-list">
+            <li>Built custom CNN on SHABD dataset, achieving <strong>92.5%</strong> accuracy.</li>
+            <li>Integrated OpenCV fingertip tracking for low-latency input.</li>
+            <li>Implemented Trigram Auto-Completion for real-time sentence prediction.</li>
+          </ul>
+          <div class="actions"><a href="#" class="btn small ghost">Code</a><a href="https://varnika.streamlit.app" target="_blank" class="btn small ghost">Demo</a></div>
+        </article>
+
+        <!-- CloudCart -->
+        <article class="p-card" data-tags="sde cloud">
+          <header>
+            <h3>CloudCart Microservices</h3>
+            <div class="badges"><span class="badge">Spring Boot</span><span class="badge">AWS</span><span class="badge">Docker</span></div>
+          </header>
+          <p class="lead-text">A scalable e-commerce platform built with microservices architecture.</p>
+          <ul class="kpi-list">
+            <li>Deployed securely on AWS EC2 with GitHub Actions CI/CD.</li>
+            <li>Optimized DynamoDB caching to reduce API latency by <strong>45%</strong>.</li>
+          </ul>
+          <div class="actions"><a href="#" class="btn small ghost">Code</a></div>
+        </article>
+
+        <!-- SoulSync -->
+        <article class="p-card" data-tags="ml ai">
+          <header>
+            <h3>SoulSync Emotional AI</h3>
+            <div class="badges"><span class="badge">FastAPI</span><span class="badge">RAG</span><span class="badge">ChromaDB</span></div>
+          </header>
+          <p class="lead-text">Multimodal companion bot blending emotion detection with Generative AI.</p>
+          <ul class="kpi-list">
+            <li>Designed a RAG pipeline for long-term memory across sessions.</li>
+            <li>Achieved <strong>sub-120ms</strong> inference latency via optimized serving.</li>
+          </ul>
+          <div class="actions"><a href="#" class="btn small ghost">Code</a><a href="#" class="btn small ghost">Demo</a></div>
+        </article>
+
+        <!-- CodeAssist -->
+        <article class="p-card" data-tags="sde ai">
+          <header>
+            <h3>CodeAssist AI</h3>
+            <div class="badges"><span class="badge">React</span><span class="badge">AWS Lambda</span><span class="badge">OpenAI</span></div>
+          </header>
+          <p class="lead-text">Serverless productivity tool generating code stubs and debugging insights.</p>
+          <ul class="kpi-list">
+            <li>Deployed on AWS Lambda for infinite serverless scalability.</li>
+            <li>Automated CI/CD reduced build times by <strong>55%</strong>.</li>
+          </ul>
+          <div class="actions"><a href="#" class="btn small ghost">Code</a></div>
+        </article>
+
+        <!-- FinDoc Intel -->
+        <article class="p-card" data-tags="ml quant">
+          <header>
+            <h3>FinDoc Intelligence</h3>
+            <div class="badges"><span class="badge">NLP</span><span class="badge">LDA</span><span class="badge">Streamlit</span></div>
+          </header>
+          <p class="lead-text">Automated insight generation from earnings calls and 10-K filings.</p>
+          <ul class="kpi-list">
+            <li>Implemented LDA topic modeling and TextRank summarization.</li>
+            <li>Reduced manual analyst review time by <strong>40%</strong>.</li>
+          </ul>
+          <div class="actions"><a href="#" class="btn small ghost">Code</a></div>
+        </article>
+
+        <!-- Quant Insight -->
+        <article class="p-card" data-tags="quant ml">
+          <header>
+            <h3>Quant Market Insight</h3>
+            <div class="badges"><span class="badge">Scikit-learn</span><span class="badge">Pandas</span><span class="badge">Alpha</span></div>
+          </header>
+          <p class="lead-text">End-to-end research pipeline for alpha signal discovery.</p>
+          <ul class="kpi-list">
+            <li>Engineered features: RSI, Volatility, Momentum for predictive factors.</li>
+            <li>Built ElasticNet & KMeans models for regime detection.</li>
+          </ul>
+          <div class="actions"><a href="#" class="btn small ghost">Code</a></div>
+        </article>
+      </div>
+    </section>
+
+    <!-- PUBLICATIONS -->
+    <section id="publications" class="publications section observe hidden">
+      <h2 class="section__title">Publications</h2>
+      <div class="pub-grid">
+        <article class="pub-card">
+          <header>
+            <h3 class="pub-title">TeenSenti — Slang-Based Sentiment Classifier</h3>
+            <p class="pub-venue">IEEE · NLP · Deep Learning</p>
+          </header>
+          <div class="pub-body">
+            <p class="pub-doi">DOI: 10.1109/AMATHE61652.2024.10582077</p>
+            <div class="pub-actions">
+              <a class="btn ghost small" href="assets/teen_senti.pdf" target="_blank">View PDF</a>
+              <a class="btn primary small" href="https://doi.org/10.1109/AMATHE61652.2024.10582077" target="_blank">View Paper</a>
+            </div>
+          </div>
+        </article>
+        <article class="pub-card">
+          <header>
+            <h3 class="pub-title">Instagram User Classification & Engagement</h3>
+            <p class="pub-venue">Springer LNNS · Ensemble Regression</p>
+          </header>
+          <div class="pub-body">
+            <p class="pub-doi">DOI: 10.1007/978-981-96-4139-0_30</p>
+            <div class="pub-actions">
+              <a class="btn ghost small" href="assets/instagrampaper.pdf" target="_blank">View PDF</a>
+              <a class="btn primary small" href="https://doi.org/10.1007/978-981-96-4139-0_30" target="_blank">View Paper</a>
+            </div>
+          </div>
+        </article>
+        <article class="pub-card">
+          <header>
+            <h3 class="pub-title">Enhancing Scholarship Opportunities</h3>
+            <p class="pub-venue">Springer LNNS · Multi-Label ML</p>
+          </header>
+          <div class="pub-body">
+            <p class="pub-doi">DOI: 10.1007/978-981-96-1687-9_17</p>
+            <div class="pub-actions">
+              <a class="btn ghost small" href="assets/Scholarship.pdf" target="_blank">View PDF</a>
+              <a class="btn primary small" href="https://doi.org/10.1007/978-981-96-1687-9_17" target="_blank">View Paper</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="skills section observe hidden">
+      <h2 class="section__title">Skills</h2>
+      <div class="skill-list">
+        <span class="skill-pill">Python</span>
+        <span class="skill-pill">Java</span>
+        <span class="skill-pill">C++</span>
+        <span class="skill-pill">JavaScript</span>
+        <span class="skill-pill">FastAPI</span>
+        <span class="skill-pill">Spring Boot</span>
+        <span class="skill-pill">React</span>
+        <span class="skill-pill">PyTorch</span>
+        <span class="skill-pill">TensorFlow</span>
+        <span class="skill-pill">RAG</span>
+        <span class="skill-pill">NLP</span>
+        <span class="skill-pill">AWS</span>
+        <span class="skill-pill">Docker</span>
+        <span class="skill-pill">SQL</span>
+        <span class="skill-pill">MongoDB</span>
+      </div>
+    </section>
+
+    <!-- EDUCATION (Redesigned - Grid Layout) -->
+    <section id="education" class="education section observe hidden">
+      <h2 class="section__title">Education</h2>
+      <div class="edu-grid">
+        <div class="edu-card">
+          <h3>University of Southern California</h3>
+          <span class="edu-degree">MS in Computer Science</span>
+          <span class="edu-meta">Los Angeles, USA · Aug 2025 – May 2027</span>
+          <p class="edu-desc"><strong>Coursework:</strong> Analysis of Algorithms, Information Retrieval & Web Search Engines</p>
+        </div>
+        <div class="edu-card">
+          <h3>Dwarkadas J. Sanghvi College of Engineering</h3>
+          <span class="edu-degree">B.Tech in Intelligent Computing</span>
+          <span class="edu-meta">Mumbai, India · Dec 2021 – May 2025 · GPA: 3.66/4</span>
+          <p class="edu-desc"><strong>Focus:</strong> AI, Data Mining, Machine Learning, Deep Learning, Distributed Systems</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXTRAS (Redesigned - Detailed Timeline List) -->
+    <section id="extras" class="section observe hidden">
+      <h2 class="section__title">Leadership & Volunteering</h2>
+      <div class="extra-list">
+        
+        <!-- Synapse -->
+        <article class="extra-item">
+          <header class="extra-header">
+            <h3>DJSCE SYNAPSE – Machine Learning Club</h3>
+            <span class="extra-role">Events & PR Lead, Volunteer</span>
+            <span class="extra-date">2023 – 2024</span>
+          </header>
+          <div class="extra-content">
+            <ul>
+              <li>Organized an NGO teaching program, delivering sessions in Mathematics, Science, and Computer Fundamentals to 30 underprivileged students.</li>
+              <li>Designed interactive teaching materials to enhance conceptual understanding and digital literacy.</li>
+              <li>Led logistics and event operations for <strong>HackNiche</strong> (24hr national hackathon) managing 1,800 registrations, 6 judges, and 10+ mentors.</li>
+              <li>Coordinated <strong>ReQuest</strong>, a tech game fair engaging 300+ attendees with 6+ interactive games.</li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- Unicode -->
+        <article class="extra-item">
+          <header class="extra-header">
+            <h3>DJSCE UNICODE – Coding Club</h3>
+            <span class="extra-role">App Development Mentor & Speaker</span>
+            <span class="extra-date">2022 – 2024</span>
+          </header>
+          <div class="extra-content">
+            <ul>
+              <li>Speaker at <strong>HackPrep</strong> (flagship event) for 150+ students; delivered a live-build session on Flutter/Dart creating 20+ UI components.</li>
+              <li>Trained 20+ students in Flutter and 15+ in UI/UX via weekly workshops, mentorship, and debugging sessions.</li>
+              <li>Guided students in creating responsive, cross-platform applications with consistent design principles.</li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- Noteng -->
+        <article class="extra-item">
+          <header class="extra-header">
+            <h3>NOTENG PROJECT</h3>
+            <span class="extra-role">App Development Mentor</span>
+            <span class="extra-date">2024</span>
+          </header>
+          <div class="extra-content">
+            <ul>
+              <li>Mentored a 20-member student team to develop “Noteng”, a note-sharing platform using Flutter and Node.js.</li>
+              <li>Directed feature design, architecture, and deployment, ensuring seamless usability and scalability.</li>
+            </ul>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="contact section observe hidden">
+      <h2 class="section__title">Contact</h2>
+      <p class="lead">Exploring <strong>SDE</strong> & <strong>AI/ML</strong> roles for Summer 2026.</p>
+      <form id="contact-form" class="form">
+        <div class="field">
+          <label for="name">Name</label>
+          <input id="name" name="name" type="text" placeholder="Your name" required />
+        </div>
+        <div class="field">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" placeholder="you@example.com" required />
+        </div>
+        <div class="field">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="4" placeholder="Let's connect..." required></textarea>
+        </div>
+        <button class="btn primary" type="submit">Send Message</button>
+        <p id="form-status"></p>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div>© <span id="year"></span> Vaishnavi Padiya</div>
+    <div class="socials">
+      <a href="https://github.com/Vaish1809" target="_blank" class="icon">GitHub</a>
+      <a href="http://www.linkedin.com/in/vaishnavipadiya" target="_blank" class="icon">LinkedIn</a>
+      <a href="mailto:vaishnavipadiya@gmail.com" class="icon">Email</a>
+    </div>
+  </footer>
+
+  <script>
+    /* Helpers */
+    const $ = (q, ctx=document) => ctx.querySelector(q);
+    const $$ = (q, ctx=document) => [...ctx.querySelectorAll(q)];
+    $("#year").textContent = new Date().getFullYear();
+
+    /* Mobile Nav */
+    const toggleBtn = $(".nav-toggle");
+    const navLinks  = $(".nav-links");
+    if(toggleBtn) {
+      toggleBtn.addEventListener("click", () => navLinks.classList.toggle("show"));
+      $$(".nav-links a").forEach(a => a.addEventListener("click", () => navLinks.classList.remove("show")));
+    }
+
+    /* Scroll Reveal - Logic to un-hide elements */
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { 
+        if (e.isIntersecting) { 
+          e.target.classList.remove("hidden"); 
+          io.unobserve(e.target); 
+        } 
+      });
+    }, { threshold: 0.1 });
+    $$(".observe").forEach(el => io.observe(el));
+
+    /* Project Filters */
+    const pills = $$(".pill");
+    const cards = $$(".p-card");
+    pills.forEach(p => p.addEventListener("click", () => {
+      pills.forEach(x => x.classList.remove("active"));
+      p.classList.add("active");
+      const filter = p.dataset.filter;
+      cards.forEach(card => {
+        const tags = card.dataset.tags;
+        if (filter === "all" || tags.includes(filter)) {
+          card.style.display = "flex";
+          setTimeout(() => card.style.opacity = "1", 50);
+        } else {
+          card.style.opacity = "0";
+          setTimeout(() => card.style.display = "none", 200);
+        }
+      });
+    }));
+
+    /* Background Particles */
+    const canvas = document.getElementById("bg");
+    if (canvas) {
+      const ctx = canvas.getContext("2d");
+      let w, h, particles;
+      const resize = () => { w = canvas.width = innerWidth; h = canvas.height = innerHeight; init(); };
+      const init = () => {
+        particles = Array.from({ length: 80 }).map(() => ({
+          x: Math.random() * w, y: Math.random() * h,
+          vx: (Math.random() - 0.5) * 0.5, vy: (Math.random() - 0.5) * 0.5,
+          size: Math.random() * 2 + 1
+        }));
+      };
+      const draw = () => {
+        ctx.clearRect(0, 0, w, h);
+        ctx.fillStyle = "rgba(138, 180, 248, 0.5)"; /* Increased visibility */
+        particles.forEach(p => {
+          p.x += p.vx; p.y += p.vy;
+          if (p.x < 0 || p.x > w) p.vx *= -1;
+          if (p.y < 0 || p.y > h) p.vy *= -1;
+          ctx.beginPath(); ctx.arc(p.x, p.y, p.size, 0, Math.PI*2); ctx.fill();
+        });
+        requestAnimationFrame(draw);
+      };
+      window.addEventListener("resize", resize);
+      resize();
+      draw();
+    }
+  </script>
+</body>
+</html>
